@@ -1,0 +1,29 @@
+body {
+    height: 100vh;
+    width: 100vw;
+    overflow-x: hidden;
+}
+
+input, input:focus {
+    border: none;
+    font-size: 1.5rem;
+}
+
+.popup {
+    display: flex;
+    background-color: #474747;
+    border-radius: 16px;
+    justify-content: space-evenly;
+    width: fit-content;
+    padding: 5px;
+}
+
+.popupButton {
+    color: #ffffff;
+    margin: 0 5px 0 5px;
+}
+
+.popupButton:hover, .popupButton:active {
+    background-color: #808080;
+    cursor: pointer;
+}
