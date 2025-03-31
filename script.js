@@ -13,13 +13,13 @@ function replaceText() {
         output.innerText = "No input >:(";
     } else {
         output.innerText = input.value;
-    }
+    };
 
     console.log(input.value);
 
     input.remove();
     content.appendChild(output);
-}
+};
 
 output.addEventListener("contextmenu", () => {
 
@@ -28,25 +28,35 @@ output.addEventListener("contextmenu", () => {
     popup.classList.add("popup");
     content.appendChild(popup);
 
-    const boldButton = document.createElement("p");
-    boldButton.innerHTML = "<b>B</b>";
-    boldButton.classList.add("popupButton");
-    popup.appendChild(boldButton);
+    const bold = document.createElement("p");
+    const italic = document.createElement("p");
+    const underline = document.createElement("p");
+    const strikethrough = document.createElement("p");
 
-    const italicButton = document.createElement("p");
-    italicButton.innerHTML = "<i>I</i>";
-    italicButton.classList.add("popupButton");
-    popup.appendChild(italicButton);
+    const buttons = ["bold", "italic", "underline", "strikethrough"];
+    const buttonElements = [bold, italic, underline, strikethrough];
+    const words = output.innerText.split(" ");
 
-    const underlineButton = document.createElement("p");
-    underlineButton.innerHTML = "<u>U</u>";
-    underlineButton.classList.add("popupButton");
-    popup.appendChild(underlineButton);
+    for (let i = 0; i <= buttons.length; i++) {
+        const word = buttons[i];
+        const firstLetter = word[0];
 
-    const strikethroughButton = document.createElement("p");
-    strikethroughButton.innerHTML = "<s>S</s>";
-    strikethroughButton.classList.add("popupButton");
-    popup.appendChild(strikethroughButton);
+        console.log(firstLetter);
+
+        buttonElements[i].innerHTML = `<${firstLetter}>${firstLetter.toUpperCase()}</${firstLetter}>`;
+        buttonElements[i].className += "popupButton";
+        popup.append(buttonElements[i]);
+
+        console.log(words[i]);
+
+        buttonElements[i].addEventListener("click", () => {
+            output.innerHTML = `<${firstLetter}>${output.innerText}</${firstLetter}>`;
+        });
+
+        words[i].addEventListener("click", () => {
+
+        });
+    };
 }
 });
 
